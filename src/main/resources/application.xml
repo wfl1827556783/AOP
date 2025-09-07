@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        <bean class="org.example.entity.Student"/>
+        <bean id="studentAOPXML" class="org.example.entity.StudentAOPXML"/>
+        <bean id="studentAOPJK" class="org.example.entity.StudentAOPJK"/>
+
+       <aop:config>
+        <aop:pointcut id="text" expression="execution(public void org.example.entity.Student.study())"/>
+           <aop:advisor advice-ref="studentAOPJK" pointcut-ref="text"/>
+       </aop:config>
+</beans>
